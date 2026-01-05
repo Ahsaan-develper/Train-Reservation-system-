@@ -1,8 +1,5 @@
-Lahore Islamabad
-Lahore Karachi
-Islamabad Lahore
-Islamabad Peshawar
-Karachi Lahore
-Karachi Quetta
-Peshawar Islamabad
-Quetta Karachi
+Faisalabad Lahore 120
+Faisalabad Islamabad 180
+Lahore Islamabad 375
+Lahore Karachi 1210
+Karachi Quetta 690

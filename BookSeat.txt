@@ -1,3 +1,2 @@
-Ali	12	10	male	1	Lahore
-Ali Yasin	123	10	male	2	Karachi
-Ahsan Ali	12345	20	male	3	Quetta
+1	Ahsan Ali	123	20	male	1	Faisalabad	Lahore	600
+2	Ali Yasin	1234	20	male	2	Faisalabad	Islamabad	900
