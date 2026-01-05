@@ -49,7 +49,6 @@ class GraphNode {
 
 // ============================ ShowStaions  Class ===============================
 class ShowStaions {
-
     private:
         static const int MAX = 20;
         string cities[MAX];
@@ -82,30 +81,43 @@ class ShowStaions {
 
         void addRoute(string from, string to, int km) {
             int i = addCity(from);
-            addCity(to);
+            addCity(to);  // ensure 'to' city exists
 
             GraphNode* newNode = new GraphNode(to, km);
-            newNode->next = adjList[i];
-            adjList[i] = newNode;
-        }
-
-        void readFromFile() {
-            ifstream file("routes.txt");
-            string from, to;
-            int km;
-
-            while (file >> from >> to >> km) {
-                addRoute(from, to, km);
+            if (!adjList[i]) {
+                adjList[i] = newNode;
+            } else {
+                GraphNode* temp = adjList[i];
+                while (temp->next)
+                    temp = temp->next;
+                temp->next = newNode;
             }
-            file.close();
         }
+
+     void readFromFile() {
+    ifstream file("routes.txt");
+    if (!file) {
+        cout << "Error: routes.txt not found!" << endl;
+        return;
+    }
+
+    string from, to;
+    int km;
+
+    while (file >> from >> to >> km) {
+        addRoute(from, to, km);
+    }
+
+    file.close();
+}
+
 
         int getDistance(string from, string to) {
             int i = getIndex(from);
             if (i == -1) return -1;
 
             GraphNode* temp = adjList[i];
-            while (temp != NULL) {
+            while (temp) {
                 if (temp->city == to)
                     return temp->km;
                 temp = temp->next;
@@ -116,26 +128,30 @@ class ShowStaions {
         int calculatePrice(string from, string to) {
             int km = getDistance(from, to);
             if (km == -1) return -1;
-            return km * 5;   // Rs 5 per KM
+            return km * 5; // Rs 5 per km
         }
 
         void showStations() {
-            system("cls");
-            cout << "\n--- TRAIN ROUTES ---\n\n";
-            for (int i = 0; i < cityCount; i++) {
-                cout << cities[i] << " -> ";
-                GraphNode* temp = adjList[i];
-                while (temp) {
-                    cout << temp->city << "(" << temp->km << "km) ";
-                    temp = temp->next;
-                }
-                cout << endl;
+        system("cls");
+        cout << "\n--- TRAIN ROUTES ---\n\n";
+
+        for (int i = 0; i < cityCount; i++) {
+            GraphNode* temp = adjList[i];
+            while (temp) {
+                cout << cities[i] << " -> " 
+                    << temp->city << ": " 
+                    << temp->km << " km" << endl;
+                temp = temp->next;
             }
-            cout << "\nPress Enter to return...";
-            cin.ignore();
-            cin.get();
         }
+
+        cout << "\nPress Enter to return...";
+        cin.ignore();
+        cin.get();
+    }
+
 };
+
 
 
 
