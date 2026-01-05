@@ -148,6 +148,7 @@ class ShowStaions {
         cout << "\nPress Enter to return...";
         cin.ignore();
         cin.get();
+         system("cls");
     }
 
 };
@@ -215,11 +216,13 @@ class Admin {
             cout << "\nPress Enter to return...";
             cin.ignore();
             cin.get();
+             system("cls");
         }
 
 
 // --------------------------------Admin ViewSeat Function-------------------------
         void viewALLSeat() {
+             system("cls");
             ifstream infile("BookSeat.txt");
             if (!infile) {
                 cout << "Error: Booking file not found!" << endl;
@@ -297,11 +300,13 @@ class Admin {
             cout << "\nPress Enter to return...";
             cin.ignore();
             cin.get();
+            system("cls");
         }
 
 
 // --------------------------------Admin CancelSeat Function-----------------------
         void cancelSeat() {
+             system("cls");
             ifstream infile("BookSeat.txt");
             if (!infile) {
                 cout << "File not found!" << endl;
@@ -405,11 +410,13 @@ class Admin {
             cout << "\nPress Enter to return...";
             cin.ignore();
             cin.get();
+             system("cls");
         }
 
 
 // --------------------------------Admin UpdateSeat Function-----------------------
         void updateSeat() {
+             system("cls");
             ifstream infile("BookSeat.txt");
             if (!infile) return;
 
@@ -474,11 +481,13 @@ class Admin {
             cout << "\nPress Enter to return...";
             cin.ignore();
             cin.get();
+             system("cls");
         }
 
 
 // --------------------------------Admin Panel Function-----------------------
         void adminPanel (){
+            system("cls");
             string choice ;
             int num ;
            do {
@@ -512,7 +521,9 @@ class Admin {
                     break;
                 }
            }while(num !=5);
+            system("cls");
         }
+
 };
 
 
@@ -563,6 +574,7 @@ class AdminRegistration {
             }else{
                 cout <<"You enter wrong qualification "<<endl;
             }
+             system("cls");
         }
 // --------------------------------Admin Login Function----------------------------
         void login (){
@@ -604,7 +616,6 @@ class AdminRegistration {
                 
             }
             infile.close();
-
         }
 
 // --------------------------------Admin Registration Panel Function-----------------------
@@ -646,11 +657,13 @@ class ShowList:Admin {
         }
 // --------------------------------Show  List Function-----------------------
         void showList (){
+            system("cls");
             viewALLSeat();
         }
 };
 // --------------------------------Main Function-----------------------
 int main(){
+    system("cls");
     string choice ;
     int num ;
         do {
